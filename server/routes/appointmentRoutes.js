@@ -1,0 +1,10 @@
+import { Router } from "express";
+import { callNextPatient, createAppointment, getDoctorQueue, getMyAppointments, updateAppointmentStatus } from "../controllers/appointmentController.js";
+import { requireAuth } from "../middleware/authenticate.js";
+const router = Router();
+router.get("/queue/:doctorId", getDoctorQueue);
+router.get("/mine", requireAuth, getMyAppointments);
+router.post("/", requireAuth, createAppointment);
+router.patch("/:id/status", requireAuth, updateAppointmentStatus);
+router.post("/next/:doctorId", requireAuth, callNextPatient);
+export default router;

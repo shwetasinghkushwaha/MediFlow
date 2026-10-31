@@ -1,0 +1,11 @@
+import { Router } from "express";
+import { createDoctor, deleteDoctor, getMyDoctorProfile, listDoctors, updateDoctor } from "../controllers/doctorController.js";
+import { requireAuth } from "../middleware/authenticate.js";
+import { requireRole } from "../middleware/authorize.js";
+const router = Router();
+router.get("/", listDoctors);
+router.get("/me", requireAuth, getMyDoctorProfile);
+router.post("/", requireAuth, requireRole("admin"), createDoctor);
+router.patch("/:id", requireAuth, requireRole("admin"), updateDoctor);
+router.delete("/:id", requireAuth, requireRole("admin"), deleteDoctor);
+export default router;
