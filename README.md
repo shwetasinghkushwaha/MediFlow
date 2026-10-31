@@ -1,4 +1,4 @@
-# QueueCare — MERN Patient Queue Management
+# MediFlow — MERN Patient Queue Management
 
 A standalone JavaScript MERN application using MongoDB, Express, React, Node.js, JWT authentication, and Socket.io queue updates.
 
